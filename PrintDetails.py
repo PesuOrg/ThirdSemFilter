@@ -7,7 +7,7 @@ def parseCsv():
         reader = csv.DictReader(csvFile)
         for row in reader:
             if(row['SRN'] not in people):
-                people[row['SRN']] = { 'Name': '', 'Email': row['Username']}
+                people[str(row['SRN']).lower()] = { 'Name': '', 'Email': row['Username']}
     return people
 
 def parseJson():
@@ -22,7 +22,8 @@ while True:
     
     if(srn == 'exit'):
         break
-    
+    srn = str(srn).lower()
+
     if(srn in people):
         print(people[srn])
     
