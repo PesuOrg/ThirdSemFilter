@@ -6,4 +6,4 @@
 4. Commit changes and submit a PR
 
 ### Results:
-Please find the list of students selected at https://github.com/PesuOrg/ThirdSemFilter
+Please find the list of students selected at https://pesuorg.github.io/ThirdSemFilter/
