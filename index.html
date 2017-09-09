@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl" style="padding:20px">
+
+ <h2 align="center">List of Selected Students for FOS Club({{selectedStudents.length}})</h2> <br/>
+   <div ng-repeat="students in selectedStudents"> 
+		<ul>
+			<li>
+				<span class="mdl-chip" style="background-color: #bbdefb">
+				    <span class="mdl-chip__text">{{students.Name}} </span>
+				</span>
+				<span class="mdl-chip" style="background-color: #e3f2fd">
+				    <span class="mdl-chip__text">{{students.Email}} </span>
+				</span>
+			</li>
+		</ul>
+   </div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope,$http) {
+   $scope.allStudentsList;
+   $scope.selectedStudents = [];
+   $http.get('people.json')
+   .then(function(data){
+   	$scope.allStudentsList = data.data;
+		for (var key in $scope.allStudentsList) {
+		  if ($scope.allStudentsList.hasOwnProperty(key)) {
+		    if($scope.allStudentsList[key].Name != ""){
+		    	$scope.selectedStudents.push($scope.allStudentsList[key]);
+		    }
+		  }
+		}
+		$scope.selectedStudents.sort(function(a,b){return (a.Name).toLowerCase() > (b.Name).toLowerCase()});
+   });
+});
+</script>
+
+
+</body>
+</html>
