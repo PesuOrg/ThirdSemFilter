@@ -36,7 +36,7 @@ app.controller('myCtrl', function($scope,$http) {
 		  if ($scope.allStudentsList.hasOwnProperty(key)) {
 		    if($scope.allStudentsList[key].Name != ""){
 		    	$scope.selectedStudents.push($scope.allStudentsList[key]);
-			console.log(allStudentsList[key].Email);
+			console.log($scope.allStudentsList[key].Email);
 		    }
 		  }
 		}
