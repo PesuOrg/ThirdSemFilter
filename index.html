@@ -21,6 +21,7 @@
 				</span>
 			</li>
 		</ul>
+	   {{students.Email}},
    </div>
 </div>
 
@@ -36,7 +37,6 @@ app.controller('myCtrl', function($scope,$http) {
 		  if ($scope.allStudentsList.hasOwnProperty(key)) {
 		    if($scope.allStudentsList[key].Name != ""){
 		    	$scope.selectedStudents.push($scope.allStudentsList[key]);
-			console.log($scope.allStudentsList[key].Email);
 		    }
 		  }
 		}
